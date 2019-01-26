@@ -6,18 +6,29 @@ $user = new User();
 $user->loadById(4);
 echo $user; --- */
 
-/*------Call all information from table ---------
-$list = User::getList();
-echo json_encode($list); ------ */
+//Call all information from table ---------
+//$list = User::getList();
+//echo json_encode($list); //------ */
 
-/* ---------- Search for something
-$all = User::search("d");
-echo json_encode($all);----*/
+//---------- Search for something
+//$all = User::search("d");
+//echo json_encode($all); //----*/
 
-$login = new User();
+//==============Valida ifexists a login========
+//$login = new User();
+//$login->login("root","root@!#");
+//echo $login;
+//=======================*/
 
-$login->login("root","root@!#");
 
-echo $login;
+
+$new = new User();
+
+$new->setLogin("Liano");
+$new->setPass("@#$!");
+
+$new->insert();
+
+echo $new;
 
 ?>

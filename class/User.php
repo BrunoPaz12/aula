@@ -41,15 +41,17 @@ class User {
             ":ID"=>$id
         ));
         if(count($result)>0){
-            $row = $result[0];
-
-            $this->setIduser($row['iduser']);
-            $this->setLogin($row['login']);
-            $this->setPass($row['passwd']);
-            $this->setDT(new DateTime($row['dtregister']));
+            $this->setData($result[0]);
         }
 
     }
+    public function setData($data){
+        $this->setIduser($data['iduser']);
+        $this->setLogin($data['login']);
+        $this->setPass($data['passwd']);
+        $this->setDT(new DateTime($data['dtregister']));
+    }
+
     public static function getList(){
         $sql = new Db();
         return $sql->select("select * from tb_user");
@@ -71,17 +73,26 @@ class User {
             ":PASS"=>$pass
         ));
         if(count($result)>0){
-            $row = $result[0];
+          
+            $this->setData($result[0]);
 
-            $this->setIduser($row['iduser']);
-            $this->setLogin($row['login']);
-            $this->setPass($row['passwd']);
-            $this->setDT(new DateTime($row['dtregister']));
         }else {
             throw new Exception("User and/or Password invalid!");
-            
         }
     }
+
+        public function insert(){
+            $sql = new Db();
+
+            $result = $sql->select("call sp_insert_user(:LOGIN, :PASS)",array(
+                ':LOGIN'=>$this->getLogin(),
+                ':PASS'=>$this->getPass()
+            ));
+            if(count($result) > 0){
+                $this->setData($result[0]);
+            }
+        }
+    
 
     public function __toString(){
         
