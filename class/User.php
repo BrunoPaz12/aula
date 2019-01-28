@@ -105,6 +105,17 @@ class User {
                 ':ID'=>$this->getIduser()
             ));
         }
+        public function delete(){
+            $sql = new Db();
+
+            $sql->query("delete from tb_user where iduser = :ID",array(
+                ':ID'=>$this->getIduser()
+            ));
+            $this->setIduser(0);
+            $this->setLogin("");
+            $this->setPass("");
+            $this->setDT(new DateTime());
+        }
     
 
     public function __toString(){

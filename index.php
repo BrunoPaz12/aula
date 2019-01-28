@@ -29,11 +29,18 @@ echo $user; --- */
 //echo $new;
 //=========================================
 
+//===============Update a information=====
+////$user = new User();
+
+///$user->loadById(8);
+
+////$user->update("Derbinho","&*()");
+
+//echo $user;
+
 $user = new User();
-
-$user->loadById(8);
-
-$user->update("Derbinho","&*()");
+$user->loadById(7);
+$user->delete();
 
 echo $user;
 
