@@ -14,21 +14,27 @@ echo $user; --- */
 //$all = User::search("d");
 //echo json_encode($all); //----*/
 
-//==============Valida ifexists a login========
+//==============Validade ifexists a login========
 //$login = new User();
 //$login->login("root","root@!#");
 //echo $login;
 //=======================*/
 
 
+//=================insert new information=========
+//$new = new User();
+//$new->setLogin("Liano");
+//$new->setPass("@#$!");
+//$new->insert();
+//echo $new;
+//=========================================
 
-$new = new User();
+$user = new User();
 
-$new->setLogin("Liano");
-$new->setPass("@#$!");
+$user->loadById(8);
 
-$new->insert();
+$user->update("Derbinho","&*()");
 
-echo $new;
+echo $user;
 
 ?>

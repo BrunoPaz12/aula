@@ -1,0 +1,6 @@
+git add --all // include new archives in the middle
+
+git commit - "Coments" // confirm the alteration
+
+git push origin master // update the files in the cloud folders
+

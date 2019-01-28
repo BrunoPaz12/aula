@@ -92,6 +92,19 @@ class User {
                 $this->setData($result[0]);
             }
         }
+
+        public function update($login, $pass){
+            $this->setLogin($login);
+            $this->setPass($pass);
+            
+            $sql = new Db();
+
+            $sql->query("update tb_user set login = :LOGIN, passwd = :PASS where iduser= :ID",array(
+                ':LOGIN'=>$this->getLogin(),
+                ':PASS'=>$this->getPass(),
+                ':ID'=>$this->getIduser()
+            ));
+        }
     
 
     public function __toString(){
